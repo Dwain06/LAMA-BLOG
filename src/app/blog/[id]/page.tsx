@@ -20,9 +20,10 @@ interface Params {
 export async function generateMetadata({ params }: { params: Params }) {
 
   const post = await getData(params.id)
+
   return {
     title: post.title,
-    description: post.desc,
+    description: post.description,
   };
 }
 
@@ -38,8 +39,9 @@ const BlogPost = async ({ params }: { params: Params }) => {
           </p>
           <div className={styles.author}>
             <Image
-              src={data.image}
-              alt=""
+              src={data.userpic}
+              alt="author"
+              sizes="100%"
               width={40}
               height={40}
               className={styles.avatar}
@@ -50,7 +52,8 @@ const BlogPost = async ({ params }: { params: Params }) => {
         <div className={styles.imageContainer}>
           <Image
             src={data.image}
-            alt=""
+            alt="lama"
+            sizes="100%"
             fill={true}
             className={styles.image}
           />

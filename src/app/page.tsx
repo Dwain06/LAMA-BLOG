@@ -17,8 +17,9 @@ export default function Home() {
         <div className={styles.imageContainer}>
           <Image
             fill={true}
-            src="https://images.unsplash.com/photo-1572297982753-48c028401d18?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2564&q=80"
+            src="https://images.unsplash.com/photo-1572297982753-48c028401d18?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NXx8bGFtYXxlbnwwfHwwfHx8MA%3D%3D&auto=format&fit=crop&w=500&q=60"
             alt="Hero"
+            sizes="100%"
             className={styles.image}
           />
         </div>

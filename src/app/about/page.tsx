@@ -8,9 +8,10 @@ const About = () => {
     <div className={styles.container}>
       <div className={styles.imgContainer}>
         <Image
-          src="https://images.unsplash.com/photo-1468939245103-ecc959f3606a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2662&q=80"
+          src="https://images.unsplash.com/photo-1468939245103-ecc959f3606a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTh8fGxhbWF8ZW58MHx8MHx8fDA%3D&auto=format&fit=crop&w=500&q=60"
           fill={true}
-          alt=""
+          sizes="100%"
+          alt="lama"
           className={styles.img}
         />
         <div className={styles.imgText}>

@@ -4,7 +4,8 @@ const nextConfig = {
     domains: [
       "images.pexels.com",
       "images.unsplash.com",
-      "fakestoreapi.com"
+      "fakestoreapi.com",
+      "xsgames.co"
     ],
   }
 }

@@ -5,8 +5,9 @@ import Image from "next/image";
 import { items } from "./data.js";
 import { notFound } from "next/navigation";
 
-const getData = (category: number) => {
-  const data = items[category];
+const getData = (category: string) => {
+  // const data = items[category];
+  const data = items[category as keyof typeof items];
 
   if (data) {
     return data;
@@ -15,13 +16,23 @@ const getData = (category: number) => {
   return notFound();
 };
 
-const Category = ({ params }) => {
+interface Params {
+  category: string;
+}
+interface Item {
+  id: number; 
+  title: string; 
+  desc: string; 
+  image: string;
+}
+
+const Category = ({ params }: { params: Params }) => {
   const data = getData(params.category);
   return (
     <div className={styles.container}>
       <h1 className={styles.catTitle}>{params.category}</h1>
 
-      {data.map((item) => (
+      {data.map((item: Item) => (
         <div className={styles.item} key={item.id}>
           <div className={styles.content}>
             <h1 className={styles.title}>{item.title}</h1>
@@ -33,7 +44,8 @@ const Category = ({ params }) => {
               className={styles.img}
               fill={true}
               src={item.image}
-              alt=""
+              sizes="100%"
+              alt="lama"
             />
           </div>
         </div>

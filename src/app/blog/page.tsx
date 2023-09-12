@@ -16,7 +16,7 @@ async function getData() {
 }
 
 interface Item {
-  id: number;
+  _id: number;
   title: string;
   description: string;
   image: string;
@@ -27,7 +27,7 @@ const Blog = async () => {
   return (
     <div className={styles.mainContainer}>
       {data.map((item: Item) => (
-        <Link href={`/blog/${item.id}`} className={styles.container} key={item.id}>
+        <Link href={`/blog/${item._id}`} className={styles.container} key={item._id}>
           <div className={styles.imageContainer}>
             <Image
               src={item.image}

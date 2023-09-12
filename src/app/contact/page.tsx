@@ -2,6 +2,12 @@ import React from 'react';
 import styles from './page.module.css'
 import Image from 'next/image';
 import Button from '@/components/Button/Button';
+import { Metadata } from 'next';
+
+export const metadata: Metadata = {
+  title: "Contact - Lama Blog",
+  description: "Contactez-nous",
+}
 
 const Contact = () => {
   return (
@@ -11,8 +17,9 @@ const Contact = () => {
         <div className={styles.imgContainer}>
           <Image
             src="/contact.jpg"
-            alt=""
+            alt="lama"
             fill={true}
+            sizes="100%"
             className={styles.image}
           />
         </div>
