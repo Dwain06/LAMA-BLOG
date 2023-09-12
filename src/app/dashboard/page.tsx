@@ -2,7 +2,8 @@
 
 import React, { useEffect } from 'react';
 import styles from './page.module.css';
-import { useState } from 'react';
+import { useSession, signIn, signOut } from "next-auth/react"
+// import { useState } from 'react';
 import useSWR from 'swr'
 
 const Dashboard = () => {
@@ -32,9 +33,12 @@ const Dashboard = () => {
   //   getData()
   // }, []);
 
+  const session = useSession();
+  console.log(session)
+
   const fetcher = (...args) => fetch(...args).then((res) => res.json());
   const { data, error } = useSWR("https://fakestoreapi.com/products/", fetcher);
-  console.log(data);
+  // console.log(data);
 
   return (
     <div className={styles.container}>
