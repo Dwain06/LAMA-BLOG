@@ -39,7 +39,6 @@ const Register = () => {
   return (
     <div className={styles.container}>
       <h1 className={styles.title}>Créer un compte</h1>
-      <h2 className={styles.subtitle}>Veuillez vous enregistrer pour accéder au dashboard.</h2>
       <form onSubmit={handleSubmit} className={styles.form}>
         <input
           type="text"

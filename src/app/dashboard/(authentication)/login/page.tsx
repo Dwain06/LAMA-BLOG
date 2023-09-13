@@ -1,11 +1,16 @@
 "use client"
 
 import React from 'react';
-import { signIn } from 'next-auth/react';
+import { signIn, useSession } from 'next-auth/react';
 import styles from './page.module.css';
 import Link from 'next/link';
+import { useRouter } from 'next/navigation';
+import Loading from '@/app/loading';
 
 const Login = () => {
+
+  const session = useSession();
+  const router = useRouter();
 
   const handleSubmit = async (e: any) => {
     e.preventDefault();
@@ -15,9 +20,21 @@ const Login = () => {
     signIn("credentials", {email, password})
   }
 
+  if (session.status === "authenticated") {
+    router.push("/dashboard")
+  }
+
+  if (session.status === "loading") {
+    return (
+      <div className={styles.container}>
+        <Loading />
+      </div>
+    )
+  }
+
   return (
     <div className={styles.container}>
-      <h1 className={styles.title}>Créer un compte</h1>
+      <h1 className={styles.title}>Connexion</h1>
       <form onSubmit={handleSubmit} className={styles.form}>
         <input
           type="text"
@@ -34,10 +51,10 @@ const Login = () => {
         <button className={styles.button}>Connexion</button>
       </form>
       <span className={styles.or}>- OU -</span>
-      <Link className={styles.link} href="/dashboard/login">
-        Se connecter avec un compte existant
+      <Link className={styles.link} href="/dashboard/register">
+        Pas encore inscrit ? Créer un compte
       </Link>
-      <button onClick={() => signIn("google")}>Se connecter avec Google</button>
+      <button className={styles.google} onClick={() => signIn("google")}>Se connecter avec Google</button>
     </div>
   );
 };

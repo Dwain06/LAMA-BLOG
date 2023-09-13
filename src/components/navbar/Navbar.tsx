@@ -36,11 +36,6 @@ const Navbar = () => {
       title: "Contact",
       url: "/contact",
     },
-    {
-      id: 6,
-      title: "Dashboard",
-      url: "/dashboard",
-    },
   ];
 
   return (
@@ -55,10 +50,20 @@ const Navbar = () => {
             {link.title}
           </Link>
         ))}
+        {session.status === "unauthenticated" &&
+          <Link href="/dashboard/login" className={styles.logout}>
+            Connexion
+          </Link>
+        }
         {session.status === "authenticated" &&
-          <button className={styles.logout} onClick={() => signOut()}>
-            Déconnexion
-          </button>
+          <>
+            <Link href="/dashboard" className={styles.link}>
+              Dashboard
+            </Link>
+            <button className={styles.logout} onClick={() => signOut()}>
+              Déconnexion
+            </button>
+          </>
         }
       </div>
     </div>
