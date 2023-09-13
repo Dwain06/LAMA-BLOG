@@ -6,12 +6,14 @@ import styles from './page.module.css';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import Loading from '@/app/loading';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 
 const Login = () => {
   
   const session = useSession();
   const router = useRouter();
+
+  const [err, setErr] = useState("");
 
   useEffect(() => {
     // Waiting for first render before redirect
@@ -26,6 +28,8 @@ const Login = () => {
     const password = e.target[1].value;
 
     const res = await signIn("credentials", {email, password, redirect: false,});
+    if (res?.error) setErr(res?.error);
+    else setErr("");
   }
 
   if (session.status === "loading") {
@@ -60,6 +64,7 @@ const Login = () => {
         Pas encore inscrit ? Créer un compte
       </Link>
       <button className={styles.google} onClick={() => signIn("google")}>Se connecter avec Google</button>
+      <p>{err}</p>
     </div>
   );}
 };

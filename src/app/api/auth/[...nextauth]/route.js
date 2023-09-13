@@ -28,7 +28,7 @@ const handler = NextAuth({
             if (isPwdCorrect) {
               return user;
             } else {
-              throw new Error("Mot de passe incorrect")
+              throw new Error("Mot de passe incorrect");
             }
           } else {
             throw new Error("Adresse email inconnue");
