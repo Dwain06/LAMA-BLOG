@@ -5,7 +5,8 @@ const nextConfig = {
       "images.pexels.com",
       "images.unsplash.com",
       "fakestoreapi.com",
-      "xsgames.co"
+      "xsgames.co",
+      "randomuser.me",
     ],
   }
 }

@@ -10,6 +10,7 @@ export const GET = async (request, {params}) => {
     await connect();
 
     const post = await Post.findById(id);
+    // console.log(post)
 
     return new NextResponse(JSON.stringify(post), {status: 200})
 
