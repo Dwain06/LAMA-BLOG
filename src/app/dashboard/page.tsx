@@ -4,7 +4,7 @@ import React, { useEffect } from 'react';
 import styles from './page.module.css';
 import { useSession, signIn, signOut } from "next-auth/react"
 // import { useState } from 'react';
-import useSWR from 'swr'
+// import useSWR from 'swr'
 import Loading from '@/app/loading';
 import { useRouter } from 'next/navigation';
 
@@ -37,11 +37,18 @@ const Dashboard = () => {
 
   const session = useSession();
   const router = useRouter();
-  console.log(session)
+  // console.log(session)
 
-  const fetcher = (...args) => fetch(...args).then((res) => res.json());
-  const { data, error } = useSWR("https://fakestoreapi.com/products/", fetcher);
-  console.log(data);
+  useEffect(() => {
+    // Waiting for first render before redirect
+    if (session.status === "unauthenticated") {
+      router?.push("/dashboard/login");
+    }
+  }, [session, router]);
+
+  // const fetcher = (...args) => fetch(...args).then((res) => res.json());
+  // const { data, error } = useSWR("https://fakestoreapi.com/products/", fetcher);
+  // console.log(data);
   
   if (session.status === "loading") {
     return (
@@ -49,10 +56,6 @@ const Dashboard = () => {
         <Loading/>
       </div>
     )
-  }
-
-  if (session.status === "unauthenticated") {
-    router.push("/dashboard/login")
   }
 
   if (session.status === "authenticated") {
