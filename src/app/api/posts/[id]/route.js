@@ -18,3 +18,17 @@ export const GET = async (request, {params}) => {
     return new NextResponse("Erreur d'accès à la base de données", {status: 500})
   }
 }
+
+export const DELETE = async (request, { params }) => {
+  const { id } = params;
+
+  try {
+    await connect();
+
+    await Post.findByIdAndDelete(id);
+
+    return new NextResponse("L'article a été supprimé", { status: 200 });
+  } catch (err) {
+    return new NextResponse("Erreur d'accès à la base de données", { status: 500 });
+  }
+};
